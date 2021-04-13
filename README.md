@@ -15,7 +15,7 @@ using namespace std;
 int main()
 {
     List<int> list;
-    list[69] = 420;
+    list[69] = 420; // As simple as that. No need to worry about the size of the list.
     cout << string(list) << endl;
     return 0;
 }
