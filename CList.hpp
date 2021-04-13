@@ -1,15 +1,15 @@
 #include <iostream>
 using namespace std;
 
-template <class elementType>
+template <class elementType> // elementType will be the class of the data which the array will store.
 class List
 {
 private:
     elementType *list;
-    long length;
+    long length; // The length of the array. This length is flexible and can be changed.
 
 public:
-    List(long length = 1)
+    List(long length = 1) // Default constructer.
     {
         this->length = length;
         list = new elementType[length];
@@ -20,12 +20,12 @@ public:
                 list[i] = (elementType)NULL;
         }
     }
-    List(const List &list)
+    List(const List<elementType> &copyList)
     {
-        list.length = this->length;
-        list.list = new elementType[length];
-        for (long i = 0; i < length && list.list[i] != NULL; i++)
-            list.list[i] = this->list[i];
+        length = copyList.length;
+        list = new elementType[length];
+        for (long i = 0; i < length; i++)
+            list[i] = copyList.list[i];
     }
     operator string() const
     {
@@ -41,12 +41,20 @@ public:
     }
     List &append(elementType element)
     {
+        /*
+        This function adds the new element to the end of this array.
+        Thus also increasing the length of the List by 1.
+        */
         extend(1);
         list[length - 1] = element;
         return *this;
     }
     elementType &operator[](long index)
     {
+        /*
+        This function returns the element at the specified position.
+        It takes care of managing the length of the list as well.
+        */
         if (index < length)
             return list[index];
         else
@@ -59,6 +67,10 @@ public:
     }
     List &insert(elementType element)
     {
+        /*
+        This function inserts the element at the first position(0th index).
+        It pushes all other elements by 1 and also increases the size of the List by 1.
+        */
         if (length == 0)
             list[0] = element;
         else
@@ -76,6 +88,11 @@ public:
     }
     List &insertAt(elementType element, long index)
     {
+        /*
+        This function lets you add the element at the specific position.
+        It will push all elements after that element by 1.
+        It also increases the size of the List by 1.
+        */
         if (index > length)
             this->operator[](index) = element;
         else
@@ -93,6 +110,11 @@ public:
     }
     long len()
     {
+        /*
+        This funtion returns the practical length of the list.
+        This means if the list has all NULL elements, it returns 0.
+        Otherwise will return the length of the list
+        */
         long listLen = 0;
         bool flag = false;
         while (listLen < length)
@@ -108,6 +130,10 @@ public:
     }
     List &sort(bool reverse = false)
     {
+        /*
+        This function will sort the list.
+        It can be done in two ways. Ascending and Descending(reverse).
+        */
         elementType temp;
         long currLen = len();
         bool swapped = false;
@@ -131,20 +157,27 @@ public:
     }
     List &extend(long extensionBy)
     {
-        // list[len() - 1] = (elementType)NULL;
-        elementType temp[length];
+        /*
+        This function extends the size of the list by the specified amount.
+        All the new elements added will be NULL.
+        */
+        elementType *temp = new elementType[length];
         long i;
         for (i = 0; i < length; i++)
             temp[i] = list[i];
         list = new elementType[length + extensionBy];
         for (i = 0; i < length; i++)
             list[i] = temp[i];
-        // list[len] = (elementType)NULL;
         length += extensionBy;
+        delete temp;
         return *this;
     }
     long search(elementType element)
     {
+        /*
+        This function will Binary Search an element.
+        The array should be sorted in ascending order.
+        */
         long high = length;
         long low = 0L;
         long mid;
