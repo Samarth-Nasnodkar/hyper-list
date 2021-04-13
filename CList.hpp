@@ -133,7 +133,7 @@ public:
             listLen++;
         }
 
-        return (flag) ? listLen : 0;
+        return (flag) ? listLen : 0L;
     }
     List &sort(bool reverse = false)
     {
