@@ -115,6 +115,16 @@ public:
         }
         return *this;
     }
+    bool isSorted()
+    {
+        bool definer = true;
+        for (long i = 0; i < length; i++)
+        {
+            if (list[i] > list[i + 1])
+                definer = false;
+        }
+        return definer;
+    }
     long len()
     {
         /*
@@ -133,7 +143,7 @@ public:
             listLen++;
         }
 
-        return (flag) ? listLen : 0;
+        return (flag) ? listLen : 0L;
     }
     List &sort(bool reverse = false)
     {
@@ -179,11 +189,13 @@ public:
         delete temp;
         return *this;
     }
-    long search(elementType element)
+    long BinarySearch(elementType element)
     {
         /*
-        This function will Binary Search an element.
-        The array should be sorted in ascending order.
+        This function will conduct a Binary Search for the ascending array.
+        It doesnt check if the array is sorted or not and might not give the correct
+        value if the array is not sorted. So If you do not know if your array is sorted then 
+        conduct smartSearch
         */
         long high = length;
         long low = 0L;
@@ -199,5 +211,51 @@ public:
                 low = mid + 1L;
         }
         return -1L;
+    }
+    long linearSearch(elementType element)
+    {
+        /*
+        This function will conduct a Linear Search and retrive the index of the element.
+        However this can get a bit slow when dealing with large lists.
+        */
+        for (long i = 0; i < length; i++)
+            if (list[i] == element)
+                return i;
+
+        return -1L;
+    }
+    long smartSearch(elementType element)
+    {
+        /*
+        This function will Search an element.
+        If the array is sorted. It will conduct Binary Search else will do Linear Search.
+        The array should be sorted in ascending order.
+        */
+        bool sorted = isSorted();
+        if (!sorted)
+        {
+            long high = length;
+            long low = 0L;
+            long mid;
+            while (low < high)
+            {
+                mid = (low + high) / 2;
+                if (list[mid] == element)
+                    return mid;
+                else if (list[mid] > element)
+                    high = mid;
+                else if (list[mid] < element)
+                    low = mid + 1L;
+            }
+            return -1L;
+        }
+        else
+        {
+            for (long i = 0; i < length; i++)
+                if (list[i] == element)
+                    return i;
+
+            return -1L;
+        }
     }
 };

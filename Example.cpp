@@ -4,8 +4,9 @@ using namespace std;
 
 int main()
 {
-    List<float> list;
-    list[31] = 420;
+    List<int> list;
+    list[5] = 6;
+    list.extend(6);
     cout << string(list) << endl;
     return 0;
 }
