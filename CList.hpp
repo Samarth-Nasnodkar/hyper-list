@@ -212,7 +212,6 @@ public:
         }
         return -1L;
     }
-<<<<<<< HEAD
     long linearSearch(elementType element)
     {
         /*
@@ -260,6 +259,3 @@ public:
         }
     }
 };
-=======
-};
->>>>>>> 10cd2213436de2e4b1bc6f7e141547af091d55d0
