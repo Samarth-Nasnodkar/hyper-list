@@ -1,5 +1,5 @@
 # CList is a library which lets you use Lists from Python in C++
-This means, You can create an array with a flexible length. It also comes with some prebuilt features like,  
+This means, You can create an array with a flexible length. It also comes with some prebuilt functions like,  
 1. sort  
 2. search(Binary search)
 3. insert
