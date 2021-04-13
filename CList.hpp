@@ -228,8 +228,7 @@ public:
     {
         /*
         This function will Search an element.
-        If the array is sorted. It will conduct Binary Search else will do Linear Search.
-        The array should be sorted in ascending order.
+        If the array is sorted it will conduct Binary Search else will do Linear Search.
         */
         bool sorted = isSorted();
         if (!sorted)
