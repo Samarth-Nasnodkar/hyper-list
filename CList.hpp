@@ -27,6 +27,13 @@ public:
         for (long i = 0; i < length; i++)
             list[i] = copyList.list[i];
     }
+    List(List<elementType> &copyList)
+    {
+        length = copyList.length;
+        list = new elementType[length];
+        for (long i = 0; i < length; i++)
+            list[i] = copyList.list[i];
+    }
     operator string() const
     {
         string repr = "[";
