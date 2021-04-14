@@ -2,17 +2,17 @@
 #include "hyper-list.hpp"
 using namespace std;
 
+int sum(int a, int b)
+{
+    return a + b;
+}
+
 int main()
 {
-    List<int> l1;
-    l1[6] = 9;
-    List<int> l2;
-    l2[5] = 0;
-    l2.append(9);
-    bool equality = (l1 == l2);
-    if (equality)
-        cout << "Equal.\n";
-    else
-        cout << "Not equal.\n";
-    return 0;
+    List<int> list;
+    list[0] = 1;
+    list[1] = 2;
+    list[2] = 3;
+    int Sum = list.reduce(sum);
+    cout << "The sum of all elements of the list is " << Sum << endl; // The sum of all elements of the list is 6
 }
