@@ -1,4 +1,4 @@
-# CList is a library which lets you use Lists from Python in C++
+# hyper-list is a library which lets you use Lists from Python in C++
 
 This means, You can create an array with a flexible length. It also comes with some prebuilt features like,
 
@@ -18,7 +18,7 @@ This means, You can create an array with a flexible length. It also comes with s
 
 ```C++
 #include <iostream>
-#include "CList.hpp"
+#include "hyper-list.hpp"
 using namespace std;
 
 int main()
