@@ -9,6 +9,10 @@ This means, You can create an array with a flexible length. It also comes with s
 5. insert
 6. insertAt
 7. append
+8. filter
+9. map
+10. reduce
+11. toArray
 
 # Example usage
 
