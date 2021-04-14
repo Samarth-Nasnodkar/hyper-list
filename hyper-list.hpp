@@ -51,7 +51,7 @@ public:
         list[length - 1] = element;
         return *this;
     }
-    List<elementType> filer(bool func(elementType))
+    List<elementType> filter(bool func(elementType))
     {
         /*
         This function resembles the filter function from JavaScript.
