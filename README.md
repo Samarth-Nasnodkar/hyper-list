@@ -1,4 +1,4 @@
-# hyper-list is a library which lets you use create flexible length arrays in C++
+# hyper-list is a library which lets you create flexible length arrays in C++
 
 This means, You can create an array with a flexible length. It also comes with some prebuilt features like,
 
