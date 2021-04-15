@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
 
 template <class elementType> // elementType will be the class of the data which the array will store.
@@ -246,6 +247,14 @@ public:
         }
         return *this;
     }
+    const elementType *begin() const
+    {
+        return &list[0];
+    }
+    const elementType *end() const
+    {
+        return &list[length];
+    }
     List &extend(long extensionBy)
     {
         /*
@@ -253,12 +262,9 @@ public:
         All the new elements added will be NULL.
         */
         elementType *temp = new elementType[length];
-        long i;
-        for (i = 0; i < length; i++)
-            temp[i] = list[i];
+        memmove(temp, list, sizeof(list[0]) * length);
         list = new elementType[length + extensionBy];
-        for (i = 0; i < length; i++)
-            list[i] = temp[i];
+        memmove(list, temp, sizeof(temp[0]) * length);
         length += extensionBy;
         return *this;
     }
