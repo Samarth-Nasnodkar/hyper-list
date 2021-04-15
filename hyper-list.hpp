@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstring>
-using namespace std;
 
 template <class elementType> // elementType will be the class of the data which the array will store.
 class List
@@ -30,15 +29,15 @@ public:
         for (long i = 0; i < length; i++)
             list[i] = copyList.list[i];
     }
-    operator string() const
+    operator std::string() const
     {
-        string repr = "[";
+        std::string repr = "[";
         for (long i = 0; i < length; i++)
         {
             if (i == length - 1)
-                repr += to_string(list[i]) + "]";
+                repr += std::to_string(list[i]) + "]";
             else
-                repr += to_string(list[i]) + ", ";
+                repr += std::to_string(list[i]) + ", ";
         }
         return repr;
     }
