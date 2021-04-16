@@ -7,7 +7,6 @@ class List
 private:
     elementType *list;
     long length; // The length of the array. This length is flexible and can be changed.
-    bool restricted = false;
 
 public:
     List(long length = 1) // Default constructer.
@@ -65,10 +64,14 @@ public:
         List<int> filteredList = list.filter(isPositiveNumber);
         */
         List<elementType> yield;
+        long increment = 0;
         for (long i = 0; i < length; i++)
         {
             if (func(list[i]))
-                yield.append(list[i]);
+            {
+                yield[increment] = list[i];
+                increment++;
+            }
         }
         return yield;
     }
@@ -88,7 +91,7 @@ public:
         */
         List<elementType> yield;
         for (long i = 0; i < length; i++)
-            yield.append(func(list[i]));
+            yield[i] = func(list[i]);
 
         return yield;
     }
@@ -272,7 +275,7 @@ public:
         /*
         This function will conduct a Binary Search for the ascending array.
         It doesnt check if the array is sorted or not and might not give the correct
-        value if the array is not sorted. So If you do not know if your array is sorted then 
+        value if the array is not sorted. So If you do not know if your array is sorted then
         conduct smartSearch
         */
         long high = length;

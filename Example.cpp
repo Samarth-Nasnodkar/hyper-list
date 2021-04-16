@@ -2,9 +2,9 @@
 #include "hyper-list.hpp"
 using namespace std;
 
-int sum(int a, int b)
+int sum(int a)
 {
-    return a + b;
+    return 5 * a;
 }
 
 int main()
@@ -13,6 +13,9 @@ int main()
     list[0] = 1;
     list[1] = 2;
     list[2] = 3;
-    int Sum = list.reduce(sum);
-    cout << "The sum of all elements of the list is " << Sum << endl; // The sum of all elements of the list is 6
+    auto newList = list.map(sum).toArray();
+    int listLen = sizeof(newList) / sizeof(newList[0]);
+    for (int i = 0; i <= listLen; i++)
+        cout << newList[i] << endl;
+    return 0;
 }
