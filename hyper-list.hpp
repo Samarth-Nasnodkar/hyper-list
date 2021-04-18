@@ -41,6 +41,11 @@ public:
         }
         return repr;
     }
+    List &yieldReset()
+    {
+        yieldIndex = 0;
+        return *this;
+    }
     elementType yield(elementType func(elementType))
     {
         /*

@@ -2,22 +2,22 @@
 #include "hyper-list.hpp"
 using namespace std;
 
-int multiply(int a)
+char UPPERCASE(char a)
 {
-    return 5 * a;
+    return toupper(a);
 }
 
 int main()
 {
-    List<int> list;
-    list[0] = 1;
-    list[1] = 2;
-    list[2] = 3;
-    int iter = list.yield(multiply);
-    while (iter != 0)
+    List<char> list;
+    list[0] = 'a';
+    list[1] = 'b';
+    list[2] = 'c';
+    char iter = list.yield(UPPERCASE);
+    while (iter != (char)NULL)
     {
         cout << iter << endl;
-        iter = list.yield(multiply);
+        iter = list.yield(UPPERCASE);
     }
     return 0;
 }
