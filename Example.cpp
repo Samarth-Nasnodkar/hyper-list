@@ -13,8 +13,11 @@ int main()
     list[0] = 1;
     list[1] = 2;
     list[2] = 3;
-    const List<int> newList = list.map(multiply);
-    for (const auto element : newList)
-        cout << element << endl;
+    int iter = list.yield(multiply);
+    while (iter != 0)
+    {
+        cout << iter << endl;
+        iter = list.yield(multiply);
+    }
     return 0;
 }

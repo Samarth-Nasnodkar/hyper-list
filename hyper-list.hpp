@@ -7,6 +7,7 @@ class List
 private:
     elementType *list;
     long length; // The length of the array. This length is flexible and can be changed.
+    long yieldIndex = 0;
 
 public:
     List(long length = 1) // Default constructer.
@@ -40,6 +41,40 @@ public:
         }
         return repr;
     }
+    elementType yield(elementType func(elementType))
+    {
+        /*
+        This function spits out one element at a time after passing it through the
+        passed in function. This means you do not need another data structure to hold 
+        all the elements and can easily iterate once at a time.
+        Example usage,
+        int squared(int value){
+            return value*value;
+        }
+        If we declare a list, 
+        List<int> list;
+        with the elements [1, 2, 3, 4, 5]
+        Then we can iterate through them by using
+        int iter = list.yield(sum);
+        while(iter != 0){
+            cout<<iter<<endl;
+            iter = list.yield(sum);
+        }
+        Everytime you use yield, it will spit out the next number.
+        Here the output will be:
+        1
+        4
+        9
+        16
+        25
+        */
+        if (yieldIndex < length)
+        {
+            yieldIndex++;
+            return func(list[yieldIndex - 1]);
+        }
+        return (elementType)NULL;
+    }
     List &append(elementType element)
     {
         /*
@@ -63,17 +98,17 @@ public:
         This function can be used to filter out all positive elements from list by using,
         List<int> filteredList = list.filter(isPositiveNumber);
         */
-        List<elementType> yield;
+        List<elementType> output;
         long increment = 0;
         for (long i = 0; i < length; i++)
         {
             if (func(list[i]))
             {
-                yield[increment] = list[i];
+                output[increment] = list[i];
                 increment++;
             }
         }
-        return yield;
+        return output;
     }
     List<elementType> map(elementType func(elementType))
     {
@@ -89,11 +124,11 @@ public:
         List<int> outputList = list.map(tripleValue);
         Here, each element of the outputList will be three times the corresponding element in list.
         */
-        List<elementType> yield;
+        List<elementType> output;
         for (long i = 0; i < length; i++)
-            yield[i] = func(list[i]);
+            output[i] = func(list[i]);
 
-        return yield;
+        return output;
     }
     elementType reduce(elementType func(elementType, elementType))
     {
