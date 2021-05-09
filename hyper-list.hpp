@@ -1,5 +1,7 @@
 #include <iostream>
 #include <cstring>
+#include <cstdlib>
+#include <functional>
 
 template <class elementType> // elementType will be the class of the data which the array will store.
 class List
@@ -8,6 +10,7 @@ private:
     elementType *list;
     long length; // The length of the array. This length is flexible and can be changed.
     long yieldIndex = 0;
+    std::function<elementType(elementType)> yieldF;
 
 public:
     List(long length = 1) // Default constructer.
@@ -41,12 +44,19 @@ public:
         }
         return repr;
     }
+    List &setYieldFunction(elementType func(elementType), bool resetCounter = true)
+    {
+        yieldF = func;
+        if (resetCounter)
+            yieldReset();
+        return *this;
+    }
     List &yieldReset()
     {
         yieldIndex = 0;
         return *this;
     }
-    elementType yield(elementType func(elementType))
+    elementType yield(elementType func(elementType) = NULL)
     {
         /*
         This function spits out one element at a time after passing it through the
@@ -73,10 +83,14 @@ public:
         16
         25
         */
+        if (func)
+        {
+            yieldF = func;
+        }
         if (yieldIndex < length)
         {
             yieldIndex++;
-            return func(list[yieldIndex - 1]);
+            return yieldF(list[yieldIndex - 1]);
         }
         return (elementType)NULL;
     }
@@ -235,7 +249,7 @@ public:
     bool isSorted()
     {
         bool definer = true;
-        for (long i = 0; i < length; i++)
+        for (long i = 0; i < length && definer; i++)
         {
             if (list[i] > list[i + 1])
                 definer = false;

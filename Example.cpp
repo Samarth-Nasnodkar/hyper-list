@@ -2,22 +2,26 @@
 #include "hyper-list.hpp"
 using namespace std;
 
-char UPPERCASE(char a)
+double times2(double a)
 {
-    return toupper(a);
+    return a * 2;
 }
 
 int main()
 {
-    List<char> list;
-    list[0] = 'a';
-    list[1] = 'b';
-    list[2] = 'c';
-    char iter = list.yield(UPPERCASE);
-    while (iter != (char)NULL)
+    List<double> list(6);
+    list[0] = 1;
+    list[1] = 9;
+    list[2] = 15;
+    list.insert(69);
+    cout << string(list) << endl;
+    list.setYieldFunction(times2);
+    double iter = list.yield();
+    while (iter)
     {
         cout << iter << endl;
-        iter = list.yield(UPPERCASE);
+        iter = list.yield();
     }
+    cout << list.len() << endl;
     return 0;
 }
