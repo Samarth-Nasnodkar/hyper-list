@@ -2,26 +2,17 @@
 #include "hyper-list.hpp"
 using namespace std;
 
-double times2(double a)
-{
-    return a * 2;
-}
-
 int main()
 {
-    List<double> list(6);
-    list[0] = 1;
-    list[1] = 9;
-    list[2] = 15;
-    list.insert(69);
-    cout << string(list) << endl;
-    list.setYieldFunction(times2);
-    double iter = list.yield();
-    while (iter)
+    List<int> list(10);
+    srand(time(0));
+    for (int i = 0; i < 10; i++)
     {
-        cout << iter << endl;
-        iter = list.yield();
+        list[i] = rand() % 100;
     }
-    cout << list.len() << endl;
+    cout << "List : " << string(list) << endl;
+    for (const auto item : list)
+        cout << item << endl;
+
     return 0;
 }
