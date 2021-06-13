@@ -10,9 +10,9 @@ int main()
     {
         list[i] = rand() % 100;
     }
-    cout << "List : " << string(list) << endl;
-    for (const auto item : list)
-        cout << item << endl;
+    cout << "List : " << list << endl;
+    // for (const auto item : list)
+    //     cout << item << endl;
 
     return 0;
 }

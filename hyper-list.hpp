@@ -393,3 +393,10 @@ public:
         }
     }
 };
+
+template <class elementType>
+std::ostream &operator<<(std::ostream &os, const List<elementType> &list)
+{
+    os << std::string(list);
+    return os;
+}
