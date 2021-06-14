@@ -258,23 +258,7 @@ public:
     }
     long len()
     {
-        /*
-        This funtion returns the practical length of the list.
-        This means if the list has all NULL elements, it returns 0.
-        Otherwise will return the length of the list
-        */
-        long listLen = 0;
-        bool flag = false;
-        while (listLen < length)
-        {
-            if (list[listLen] != (elementType)NULL)
-            {
-                flag = true;
-            }
-            listLen++;
-        }
-
-        return (flag) ? listLen : 0L;
+        return length;
     }
     List &sort(bool reverse = false)
     {
