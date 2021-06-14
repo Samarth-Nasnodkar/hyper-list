@@ -3,16 +3,15 @@
 This means, You can create an array with a flexible length. It also comes with some prebuilt features like,
 
 1. sort
-2. smartSearch
-3. binarySearch
-4. linearSearch
-5. insert
-6. insertAt
-7. append
-8. filter
-9. map
-10. reduce
-11. toArray
+2. binarySearch
+3. linearSearch
+4. insert
+5. insertAt
+6. append
+7. filter
+8. map
+9. reduce
+10. toArray
 
 # Example usage
 
